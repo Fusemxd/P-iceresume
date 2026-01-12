@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Phisit Nadee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0f172a; 
+            --secondary-color: #334155;
+            --accent-color: #2563eb; 
+            --highlight: #f59e0b; 
+            --text-main: #334155;
+            --text-dark: #0f172a;
+            --sidebar-bg: #f8fafc;
+            --white: #ffffff;
+            --skill-bg: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: #cbd5e1;
+            font-family: 'Inter', 'Sarabun', sans-serif;
+            color: var(--text-main);
+            line-height: 1.4;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: var(--white);
+            margin: 5px auto;
+            display: flex;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--highlight));
+            z-index: 10;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 25%;
+            background-color: var(--sidebar-bg);
+            padding: 25px 15px;
+            border-right: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-img-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cbd5e1;
+            font-size: 35px;
+            border: 3px solid var(--white);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-section { margin-bottom: 20px; }
+
+        .sidebar-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #cbd5e1;
+            margin-left: 8px;
+        }
+
+        .contact-item {
+            display: flex;
+            font-size: 9.5px;
+            margin-bottom: 6px;
+            align-items: flex-start;
+            line-height: 1.3;
+        }
+
+        .contact-item i {
+            width: 14px;
+            color: var(--accent-color);
+            margin-top: 1px;
+            margin-right: 6px;
+            font-size: 10px;
+        }
+
+        .skill-item {
+            margin-bottom: 9px;
+        }
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9.5px;
+            font-weight: 600;
+            margin-bottom: 3px;
+            color: var(--secondary-color);
+        }
+        .skill-bar {
+            width: 100%;
+            height: 5px;
+            background: var(--skill-bg);
+            border-radius: 10px;
+        }
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-color), #60a5fa);
+            border-radius: 10px;
+        }
+
+        .soft-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        .soft-tag {
+            font-size: 9px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: var(--secondary-color);
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            width: 75%;
+            padding: 30px 40px;
+        }
+
+        .header { margin-bottom: 15px; }
+        .header h1 {
+            font-size: 28px;
+            color: var(--primary-color);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 2px;
+        }
+        .header .sub {
+            font-size: 14px;
+            color: var(--accent-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .profile-text {
+            font-size: 10.5px;
+            text-align: justify;
+            color: var(--secondary-color);
+            line-height: 1.5;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 15px 0 10px;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .section-title i {
+            background: var(--primary-color);
+            color: var(--white);
+            width: 24px;
+            height: 24px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 12px;
+        }
+
+        .experience-container {
+            border-left: 2px solid #e2e8f0;
+            margin-left: 11px;
+            padding-left: 20px;
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .experience-item::before {
+            content: "";
+            position: absolute;
+            left: -27px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            background: var(--white);
+            border: 2.5px solid var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2px;
+        }
+
+        .role-title { font-weight: 700; font-size: 13px; color: var(--text-dark); }
+        .comp-name { font-weight: 600; font-size: 11px; color: var(--accent-color); }
+        .date-badge {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 9.5px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .sub-pos-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin: 2px 0;
+            display: flex;
+            align-items: center;
+        }
+        .sub-pos-title::before {
+            content: "→";
+            margin-right: 6px;
+            color: var(--accent-color);
+        }
+
+        .exp-desc {
+            font-size: 10.5px;
+            padding-left: 15px;
+            list-style-type: none;
+            line-height: 1.4;
+        }
+        .exp-desc li {
+            margin-bottom: 2px;
+            position: relative;
+        }
+        .exp-desc li::before {
+            content: "•";
+            position: absolute;
+            left: -12px;
+            color: var(--accent-color);
+        }
+
+        /* Layout for bottom sections */
+        .edu-item { margin-bottom: 10px; }
+        .edu-item strong { font-size: 12.5px; color: var(--primary-color); }
+        .edu-modules { font-size: 10px; color: var(--secondary-color); margin-top: 2px; }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .cert-card {
+            font-size: 10px;
+            background: #f8fafc;
+            padding: 6px 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .cert-card i { color: var(--highlight); margin-right: 8px; font-size: 11px; }
+
+        @media print {
+            body { background: none; }
+            .page { margin: 0; box-shadow: none; width: 210mm; height: 297mm; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile-img-container">
+                <div class="profile-img"><i class="fa-solid fa-user-tie"></i></div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Contact</h3>
+                <div class="contact-item"><i class="fa-solid fa-phone"></i><span>088-2677534</span></div>
+                <div class="contact-item"><i class="fa-solid fa-envelope"></i><span>icezpisit999@gmail.com</span></div>
+                <div class="contact-item"><i class="fa-solid fa-calendar"></i><span>31 July 1992</span></div>
+                <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>63 M. 1 T. Tawangtan A. Sarapee, Chiang Mai 20140</span></div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Expertise</h3>
+                <div class="skill-item">
+                    <div class="skill-info"><span>ISO 9001:2015</span><span>85%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>DCC Management</span><span>90%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>QC Supervision</span><span>85%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Industrial Safety</span><span>85%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>MS Office (Excel)</span><span>90%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Core Skills</h3>
+                <div class="soft-skills">
+                    <span class="soft-tag">Problem Solving</span>
+                    <span class="soft-tag">Leadership</span>
+                    <span class="soft-tag">Work Ethics</span>
+                    <span class="soft-tag">Adaptability</span>
+                    <span class="soft-tag">GISTDA Mapping</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Languages</h3>
+                <div class="contact-item"><strong>Thai</strong><span style="margin-left: auto;">Native</span></div>
+                <div class="contact-item"><strong>English</strong><span style="margin-left: auto;">Basic</span></div>
+            </div>
+
+            <div class="sidebar-section" style="margin-top: auto;">
+                <p style="font-size: 8px; color: #94a3b8; text-align: center;">PHISIT NADEE | 2024</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>Mr. Phisit Nadee</h1>
+                <div class="sub">Environmental Engineer & Operations Specialist</div>
+            </div>
+
+            <div class="profile-text">
+                I am a dedicated professional who enjoys hands-on work and continuous learning. With a solid foundation of 3 years in the <strong>Thai government</strong> and 3 years in <strong>heavy industry</strong>, I have developed a strong sense of responsibility, reliability, and meticulous attention to detail. I am highly skilled in project management and organization, with the ability to work independently using my own initiative. I am accustomed to prioritizing tasks under pressure and meeting tight deadlines. Most importantly, I am a friendly and effective communicator who can successfully transfer my expertise and skills to my team. I am now looking to bring these assets to a new industry and contribute to the company's growth.
+            </div>
+
+            <h3 class="section-title"><i class="fa-solid fa-briefcase"></i> Work Experiences</h3>
+            <div class="experience-container">
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="role-title">Pinnacle Asset Management Co,.Ltd.</div>
+                            <span class="comp-name">Senior Specialist (ISO & Operations)</span>
+                        </div>
+                        <span class="date-badge">2023 – PRESENT</span>
+                    </div>
+                    <div class="sub-pos-title">Senior Document Control / ISO</div>
+                    <ul class="exp-desc">
+                        <li>Control and define numbering systems in compliance with ISO 9001 standards.</li>
+                        <li>Manage DCC lifecycle, revisions, and archiving processes for all departments.</li>
+                    </ul>
+                    <div class="sub-pos-title">Senior Asset Sales Officer</div>
+                    <ul class="exp-desc">
+                        <li>Manage legal ownership transfers and synchronize inventory systems.</li>
+                        <li>Oversee DMS administration and monitor critical document expiration dates.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="role-title">Linfox Transportation Thailand</div>
+                            <span class="comp-name">Dispatcher (Northern Region Hub)</span>
+                        </div>
+                        <span class="date-badge">2022 – 2023</span>
+                    </div>
+                    <ul class="exp-desc">
+                        <li>Strategized fleet schedules and route optimization for the Northern region hub.</li>
+                        <li>Verified manifests and consolidated logistical data for management reports.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="role-title">Energy Efficiency Engineering Co.,Ltd</div>
+                            <span class="comp-name">Safety & QC Supervisor</span>
+                        </div>
+                        <span class="date-badge">2019 – 2021</span>
+                    </div>
+                    <ul class="exp-desc">
+                        <li>Supervised industrial corrosion protection projects and technical QC operations.</li>
+                        <li>Developed JSAs and provided safety/technical training for site personnel.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="role-title">Office of Natural Resources and Environment</div>
+                            <span class="comp-name">Environmental Officer (Chiang Mai)</span>
+                        </div>
+                        <span class="date-badge">2015 – 2019</span>
+                    </div>
+                    <ul class="exp-desc">
+                        <li>Conducted EIA inspections and regional environmental impact assessments.</li>
+                        <li>Monitored forest fires via GISTDA satellite and coordinated suppression efforts.</li>
+                        <li>Participated in royal projects to promote sustainable local development.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+            <div class="edu-item">
+                <div class="exp-header">
+                    <strong>Maejo University</strong>
+                    <span class="date-badge">2011 – 2014</span>
+                </div>
+                <div style="font-size: 11.5px; font-weight: 600; margin-top: 1px;">Bachelor of Engineering (Environmental Engineering)</div>
+                <div class="edu-modules">Key Focus: Environmental Engineering, Material Science, Process Engineering, ISO Standards</div>
+            </div>
+            <div class="edu-item">
+                <div class="exp-header">
+                    <strong>Yupparaj Wittayalai School</strong>
+                    <span class="date-badge">2006 – 2010</span>
+                </div>
+                <div style="font-size: 10.5px;">Science-Mathematics Program, Chiang Mai</div>
+            </div>
+
+            <h3 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications</h3>
+            <div class="cert-grid">
+                <div class="cert-card"><i class="fa-solid fa-shield-halved"></i> Safety Tech (OSH Act B.E. 2554)</div>
+                <div class="cert-card"><i class="fa-solid fa-user-shield"></i> Safety Supervisor (OSH Act B.E. 2554)</div>
+                <div class="cert-card"><i class="fa-solid fa-check-double"></i> CMP-Fibalite QC Systems Expert</div>
+                <div class="cert-card"><i class="fa-solid fa-lock"></i> PDPA Implementation Specialist</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
